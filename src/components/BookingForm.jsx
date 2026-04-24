@@ -70,7 +70,8 @@ const BookingForm = ({ event, onBook }) => {
     const ticketCount = Number(formData.tickets);
     const bookingData = {
       ...formData,
-      tickets: ticketCount
+      tickets: ticketCount,
+      eventId: event.id
     };
 
     onBook(ticketCount, bookingData);
@@ -83,64 +84,61 @@ const BookingForm = ({ event, onBook }) => {
     <div>
       <h2>Booking Form</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </label>
-          {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
+        <div className="form-group">
+          <label>Name</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            placeholder="Enter your full name"
+          />
+          {errors.name && <p style={{ color: '#f87171', fontSize: '0.85rem', marginTop: '4px' }}>{errors.name}</p>}
         </div>
 
-        <div>
-          <label>
-            Email:
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-          </label>
-          {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
+        <div className="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Enter your email address"
+          />
+          {errors.email && <p style={{ color: '#f87171', fontSize: '0.85rem', marginTop: '4px' }}>{errors.email}</p>}
         </div>
 
-        <div>
-          <label>
-            Department:
-            <input
-              type="text"
-              name="department"
-              value={formData.department}
-              onChange={handleChange}
-            />
-          </label>
-          {errors.department && <p style={{ color: 'red' }}>{errors.department}</p>}
+        <div className="form-group">
+          <label>Department</label>
+          <input
+            type="text"
+            name="department"
+            value={formData.department}
+            onChange={handleChange}
+            placeholder="Enter your department"
+          />
+          {errors.department && <p style={{ color: '#f87171', fontSize: '0.85rem', marginTop: '4px' }}>{errors.department}</p>}
         </div>
 
-        <div>
-          <label>
-            Number of Tickets:
-            <input
-              type="number"
-              name="tickets"
-              value={formData.tickets}
-              onChange={handleChange}
-              min="1"
-            />
-          </label>
-          {errors.tickets && <p style={{ color: 'red' }}>{errors.tickets}</p>}
+        <div className="form-group">
+          <label>Number of Tickets</label>
+          <input
+            type="number"
+            name="tickets"
+            value={formData.tickets}
+            onChange={handleChange}
+            min="1"
+            placeholder={`Max ${event.availableTickets} available`}
+          />
+          {errors.tickets && <p style={{ color: '#f87171', fontSize: '0.85rem', marginTop: '4px' }}>{errors.tickets}</p>}
         </div>
 
-        <button type="submit">Submit Booking</button>
+        <button type="submit">Book Tickets 🎫</button>
       </form>
-      {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+      {successMessage && <p style={{ color: '#4ade80', marginTop: '16px', fontWeight: '600' }}>{successMessage}</p>}
     </div>
   );
 };
 
 export default BookingForm;
+

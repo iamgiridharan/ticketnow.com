@@ -5,15 +5,17 @@ public class BookingRequest {
     private String email;
     private String department;
     private int numberOfTickets;
+    private Long eventId;
 
     // Constructors
     public BookingRequest() {}
 
-    public BookingRequest(String name, String email, String department, int numberOfTickets) {
+    public BookingRequest(String name, String email, String department, int numberOfTickets, Long eventId) {
         this.name = name;
         this.email = email;
         this.department = department;
         this.numberOfTickets = numberOfTickets;
+        this.eventId = eventId;
     }
 
     // Getters and Setters
@@ -47,5 +49,13 @@ public class BookingRequest {
 
     public void setNumberOfTickets(int numberOfTickets) {
         this.numberOfTickets = numberOfTickets;
+    }
+
+    public Long getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Long eventId) {
+        this.eventId = eventId;
     }
 }
